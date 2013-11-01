@@ -12,9 +12,9 @@
 				<?=Time::display($post['created'])?>
 			</time>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href='/posts/delete_one/<?=$post['post_id']?>'>Delete</a>
-			&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href='/posts/edit_one/<?=$post['post_id']?>'>Edit</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href='/posts/delete_one/<?=$post['post_id']?>'>Delete</a>
 		</p>
 	</article>
 <?php endforeach; ?>

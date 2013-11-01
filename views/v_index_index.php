@@ -1,5 +1,5 @@
 <?php if($user): ?>
-	<div id='fp2'>
+	<div id='fp1'>
 		Welcome back <?=$user->first_name;?>! We're glad you stopped by.<br>
 		Click below to get to your posts --> <a href='/posts'>Goto posts</a>
 	</div>
