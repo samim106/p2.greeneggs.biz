@@ -18,7 +18,7 @@ class posts_controller extends base_controller {
 	public function p_add() {
 		// check if there is content, if not, just go back to the same page
 		if ($_POST['content'] == null) {
-			Router::redirect('/posts/add/');
+			Router::redirect('/posts/add');
 		}
 		// format the data
 		$_POST['user_id']	= $this->user->user_id;
@@ -103,7 +103,7 @@ class posts_controller extends base_controller {
 			echo "<h2>ERROR 100: There was an error updating your post.</h2>";
 		}
 		else {
-			Router::redirect('/posts/edit/');
+			Router::redirect('/posts/edit');
 		}		
 	}
 	
@@ -139,7 +139,7 @@ class posts_controller extends base_controller {
 			echo "<h2>ERROR 110: Strange. There was nothing found to delete!</h2>";
 		}
 		else {
-			Router::redirect('/posts/edit/');
+			Router::redirect('/posts/edit');
 		}
 	}
 	

@@ -68,11 +68,6 @@ class users_controller extends base_controller {
 		// get the password
 		$_POST['password'] 	= sha1(PASSWORD_SALT.$_POST['password']);
 		
-		// !@# DEBUG -- DELETE
-		echo "<pre>";
-		print_r($_POST);
-		echo "</pre>";
-		
 		$q = 'SELECT token 
 				FROM users
 				WHERE email = "'.$_POST['email'].'"
@@ -84,7 +79,7 @@ class users_controller extends base_controller {
 			setcookie('token', $token, strtotime('+30 minutes'), '/');
 			
 			// Redirect the user to the posts page
-			Router::redirect('/posts/');
+			Router::redirect('/posts');
 		}
 		else {
 			echo "login failed";
