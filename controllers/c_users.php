@@ -54,7 +54,7 @@ class users_controller extends base_controller {
 		}
 	}
 	
-	public function login($msg) {
+	public function login($msg = null) {
 		$this->template->content = View::instance('v_users_login');
 		$this->template->title = "Login";
 		$this->template->msg = $msg;
