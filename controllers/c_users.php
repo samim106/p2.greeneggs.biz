@@ -88,8 +88,6 @@ class users_controller extends base_controller {
 	}
 
     public function logout() {
-        echo "This is the logout page";
-		
 		// create new token & insert into db
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 		$data = Array('token' => $new_token);
