@@ -2,10 +2,10 @@
 	<?php 
 		switch($msg) {
 			case 510:
-				echo "ERROR:<br>Sorry, your login information was incorrect."
+				echo "ERROR:<br>Sorry, your login information was incorrect.";
 				break;
 			default:
-				echo "Please input your user information to the right to log in."
+				echo "Please input your user information to the right to log in.";
 				break;
 			}
 	?>
