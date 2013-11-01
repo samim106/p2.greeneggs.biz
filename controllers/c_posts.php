@@ -48,8 +48,7 @@ class posts_controller extends base_controller {
 
 		echo $this->template;
 	}
-	
-	
+		
 	public function edit() {
 		$this->template->content = View::instance("v_posts_edit");
 		$this->template->title   = "Edit / Delete a Post";
@@ -143,22 +142,7 @@ class posts_controller extends base_controller {
 		}
 	}
 	
-	
 	public function index() {
-		/*
-		$this->template->content = View::instance('v_posts_index');
-		
-		$q = 'SELECT posts.*, users.first_name, users.last_name
-				FROM posts
-				INNER JOIN users
-				ON posts.user_id = users.user_id';
-		
-		$posts = DB::instance(DB_NAME)->select_rows($q);
-		
-		$this->template->content->posts = $posts;
-		echo $this->template;
-		*/
-		
 		 # Set up the View
 		$this->template->content = View::instance('v_posts_index');
 		$this->template->title   = "Followed Posts";
@@ -177,15 +161,6 @@ class posts_controller extends base_controller {
 			INNER JOIN users 
 				ON posts.user_id = users.user_id
 			WHERE users_users.user_id = '.$this->user->user_id;
-		/*
-		$q = "SELECT 
-				posts .* , 
-				users.first_name, 
-				users.last_name
-			FROM posts
-			INNER JOIN users 
-				ON posts.user_id = users.user_id";
-		*/
 		
 		# Run the query
 		$posts = DB::instance(DB_NAME)->select_rows($q);
@@ -195,36 +170,6 @@ class posts_controller extends base_controller {
 
 		# Render the View
 		echo $this->template;
-		
-		/*
-		 # Set up the View
-		$this->template->content = View::instance('v_posts_index');
-		$this->template->title   = "Green Eggs - All Posts";
-
-		# Query
-		$q = 'SELECT 
-				posts.content,
-				posts.created,
-				posts.user_id AS post_user_id,
-				users_users.user_id AS follower_id,
-				users.first_name,
-				users.last_name
-			FROM posts
-			INNER JOIN users_users 
-				ON posts.user_id = users_users.user_id_followed
-			INNER JOIN users 
-				ON posts.user_id = users.user_id
-			WHERE users_users.user_id = '.$this->user->user_id;
-
-		# Run the query, store the results in the variable $posts
-		$posts = DB::instance(DB_NAME)->select_rows($q);
-
-		# Pass data to the View
-		$this->template->content->posts = $posts;
-
-		# Render the View
-		echo $this->template;
-		*/
 	}
 	
 	public function users() {
@@ -246,7 +191,6 @@ class posts_controller extends base_controller {
 		
 		echo $this->template;
 	}
-
 	
 	public function follow($user_id_followed) {
 
@@ -274,8 +218,6 @@ class posts_controller extends base_controller {
 		Router::redirect("/posts/users");
 
 	}
-		
-	
 	
 }
 

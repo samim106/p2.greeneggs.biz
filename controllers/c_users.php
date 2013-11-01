@@ -120,45 +120,6 @@ class users_controller extends base_controller {
 		$this->template->content->user_data = $data;
 	
 		echo $this->template;
-	
-	
-/*	
-		// using master template - this actually gets called in c_base.php in the base template
-		//$template = View::instance('_v_template');
-		
-		# set up the view
-		$this->template->content = View::instance('v_users_profile');
-		$this->template->title = "profile";
-		
-		#load css or js or whatever header files
-		//$client_files_head = Array('/css/profile.css','/css/master.css', '/js/blah.js');
-		//$this->template->client_files_head = Utils::load_client_files($client_files_head);
-		
-		$client_files_body = Array ('/js.profile.js');
-		$this->template->client_files_body = Utils::load_client_files($client_files_body);
-
-        if($user_name == NULL) {
-            echo "No user specified";
-        }
-        else {
-            echo "This is the profile for ".$user_name;
-        }
-
-		echo "<br>";
-		echo "<br>";
-		echo $this->user->first_name;
-		echo $this->user->last_name;
-		echo $this->user->email;
-		echo "<br>";echo "<br>";
-		
-		#display the view
-		echo $this->template;
-	
-		// loading the view file v_users_profile
-		//$view = View::instance('v_users_profile');
-		//$view->user_name = $user_name;
-		//echo $view;
-	*/	
     }
 
 } # end of the class
