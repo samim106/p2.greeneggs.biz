@@ -54,15 +54,13 @@ class users_controller extends base_controller {
 		}
 	}
 	
-	// display
-    public function login() {
-	
-		/*
+	public function login($msg) {
 		$this->template->content = View::instance('v_users_login');
-        echo $this->template;
-		*/
-		Router::redirect('/');
-    }
+		$this->template->title = "Login";
+		$this->template->msg = $msg;
+    
+		echo $this->template;
+	}
 	
 	public function p_login() {
 		// get the password
@@ -82,7 +80,8 @@ class users_controller extends base_controller {
 			Router::redirect('/posts');
 		}
 		else {
-			echo "login failed";
+			// redirect to the login page with an error msg
+			Router::redirect('/users/login/510');
 		}
 		echo $token;
 	}
