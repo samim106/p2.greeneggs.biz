@@ -9,7 +9,7 @@
 		</p>
 		<p class='article_poster'>
 			<?=substr($post['first_name'],0,1)?> <?=$post['last_name']?> - 
-			<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+			<time datetime="<?=Time::display($post['created'],'Y-m-d').'T'.Time::display($post['created'],'G:i')?>">
 				<?=Time::display($post['created'])?>
 			</time>
 		</p>
