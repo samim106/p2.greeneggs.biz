@@ -1,6 +1,6 @@
 <div id='article_container'>
-	<article id='article_one'>
-		<p id='article_content'>
+	<article class='article_one'>
+		<p class='article_content'>
 	<?php if ($msg==-1): ?>
 		Sorry, you are not the author of this post and cannot edit this post.
 	<?php else: ?>
@@ -12,7 +12,7 @@
 		</form>
 	<?php endif; ?>
 		</p>
-		<p id='article_poster'>Created: 
+		<p class='article_poster'>Created: 
 			<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
 				<?=Time::display($post['created'])?>
 			</time>
