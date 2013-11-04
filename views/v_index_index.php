@@ -22,7 +22,6 @@
 		password <input type="password" name="password" /> <br/>
 		<input type="submit" value="login">
 	</form>
-	<a href='reset_pw.php'>Can't access your account?</a>
 
 	<br><br>
 	<div id='signup_button'>
