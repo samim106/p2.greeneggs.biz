@@ -3,8 +3,7 @@
 		switch($msg) {
 			case 501:
 				echo "ERROR:<br>
-					Sorry, that email is already in use. Please use another email address or if 
-					you have forgotten your password, use this link to retrieve it. !@#";
+					Sorry, that email is already in use. Please use another email address.";
 				break;
 			case 502:
 				echo "ERROR:<br>

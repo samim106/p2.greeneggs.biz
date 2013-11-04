@@ -66,27 +66,26 @@ class posts_controller extends base_controller {
 		echo $this->template;
 	}
 
-	public function edit_one($errorMsg) {
+	public function edit_one($input) {
 		$this->template->content = View::instance("v_posts_edit_one");
 		$this->template->title   = "Edit a Post";
-		$this->template->content->msg = $errorMsg;
+		$this->template->content->msg = $input;
 		
-		// Build the query
-		$q = 'SELECT content, created, user_id, post_id
-			FROM posts
-			WHERE post_id = '.$errorMsg;
-		
-		// Run the query
-		$post = DB::instance(DB_NAME)->select_row($q);
-
-		// Confirm that the user who posted it is editing it
-		if (($this->user->user_id != $post['user_id']) && ($errorMsg != -1))
-		{
+		// Build the query but confirm we got an input prior to running the query
+		if ($input > 0) {
+			$q = 'SELECT content, created, user_id, post_id
+				FROM posts
+				WHERE post_id = '.$input;
+			
+			// Run the query
+			$post = DB::instance(DB_NAME)->select_row($q);
+		}
+		else if ($this->user->user_id != $post['user_id']) {
+			// Confirm that the user who posted it is editing it
 			Router::redirect('/posts/edit_one/-1');
 		}
 		
 		$this->template->content->post = $post;
-
 		echo $this->template;
 	}
 	
@@ -95,9 +94,14 @@ class posts_controller extends base_controller {
 		$data = Array(
 					"content" => $_POST['content'],
 					"modified" => Time::now() );
+
+		// make sure there's something to edit
+		$ret = -1;
+		if ($_POST['post_id'] != null) {
+			// update the post
+			$ret = DB::instance(DB_NAME)->update("posts", $data, "WHERE post_id = ".$_POST['post_id']);
+		}
 		
-		// update the post
-		$ret = DB::instance(DB_NAME)->update("posts", $data, "WHERE post_id = ".$_POST['post_id']);
 		if ($ret != 1) {
 			echo "<h2>ERROR 100: There was an error updating your post.</h2>";
 		}
@@ -131,8 +135,12 @@ class posts_controller extends base_controller {
 	}
 	
 	public function p_delete_one() {
-		
-		$ret = DB::instance(DB_NAME)->delete('posts', "WHERE post_id = ".$_POST['post_id']);
+		// make sure there's something to delete
+		$ret = -1;
+		if ($_POST['post_id'] != null) {
+			// delete the post
+			$ret = DB::instance(DB_NAME)->delete('posts', "WHERE post_id = ".$_POST['post_id']);			
+		}
 		
 		if ($ret != 1) {
 			echo "<h2>ERROR 110: Strange. There was nothing found to delete!</h2>";

@@ -87,6 +87,11 @@ class users_controller extends base_controller {
 	}
 
     public function logout() {
+		// make sure the user is logged in prior to logout
+		if(!$this->user) {
+			Router::redirect('/');
+		}
+
 		// create new token & insert into db
 		$new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
 		$data = Array('token' => $new_token);
