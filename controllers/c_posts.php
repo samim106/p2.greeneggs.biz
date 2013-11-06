@@ -187,7 +187,8 @@ class posts_controller extends base_controller {
 		$this->template->title = "Green Eggs - User List";
 		
 		$q = 'SELECT *
-				FROM users';
+				FROM users 
+				ORDER BY first_name';
 		$users = DB::instance(DB_NAME)->select_rows($q);
 		
 		$q = 'SELECT * 
