@@ -74,7 +74,7 @@ class users_controller extends base_controller {
 		$token = DB::instance(DB_NAME)->select_field($q);
 		
 		if ($token) {
-			setcookie('token', $token, strtotime('+30 minutes'), '/');
+			setcookie('token', $token, strtotime('+500 minutes'), '/');
 			
 			// Redirect the user to the posts page
 			Router::redirect('/posts');
